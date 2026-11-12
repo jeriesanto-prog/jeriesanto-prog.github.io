@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7fb">
+    <meta name="description" content="Anto Jeries A — B.Tech student and aspiring developer at Joy University, graduating in 2030.">
+    <title>Anto Jeries A — Developer Portfolio</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --page: #f6f7fb;
+        --surface: #ffffff;
+        --surface-soft: #f0f1f8;
+        --text: #202238;
+        --muted: #70738a;
+        --line: #e7e8f0;
+        --accent: #6b5ce7;
+        --accent-strong: #5545d2;
+        --accent-tint: #eeebff;
+        --shadow: 0 18px 48px rgb(34 35 65 / 7%);
+      }
+
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --page: #13141d;
+        --surface: #1c1e2a;
+        --surface-soft: #252737;
+        --text: #f2f2fa;
+        --muted: #a4a6bb;
+        --line: #303244;
+        --accent: #a69aff;
+        --accent-strong: #b7adff;
+        --accent-tint: #2b2744;
+        --shadow: 0 18px 48px rgb(0 0 0 / 22%);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          color-scheme: dark;
+          --page: #13141d;
+          --surface: #1c1e2a;
+          --surface-soft: #252737;
+          --text: #f2f2fa;
+          --muted: #a4a6bb;
+          --line: #303244;
+          --accent: #a69aff;
+          --accent-strong: #b7adff;
+          --accent-tint: #2b2744;
+          --shadow: 0 18px 48px rgb(0 0 0 / 22%);
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 12% 0%, var(--accent-tint), transparent 34rem),
+          var(--page);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 15px;
+        line-height: 1.65;
+        transition: background-color 180ms ease, color 180ms ease;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .site-header,
+      main {
+        width: min(100% - 48px, 1040px);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 84px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        color: var(--text);
+        font-size: 15px;
+        font-weight: 750;
+        letter-spacing: -0.035em;
+      }
+
+      .brand span {
+        color: var(--accent);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(16px, 3vw, 32px);
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 550;
+      }
+
+      .nav a {
+        transition: color 160ms ease;
+      }
+
+      .nav a:hover {
+        color: var(--accent-strong);
+      }
+
+      .theme-toggle {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        font-size: 17px;
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+
+      .theme-toggle:hover {
+        transform: rotate(12deg);
+        border-color: var(--accent);
+      }
+
+      main {
+        padding: clamp(68px, 11vw, 112px) 0 88px;
+      }
+
+      .hero {
+        max-width: 760px;
+        margin-bottom: clamp(56px, 9vw, 88px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 22px;
+        color: var(--accent-strong);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.075em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        content: "";
+        box-shadow: 0 0 0 4px var(--accent-tint);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(42px, 8vw, 76px);
+        font-weight: 760;
+        letter-spacing: -0.075em;
+        line-height: 1.04;
+      }
+
+      h1 span {
+        color: var(--accent);
+      }
+
+      .tagline {
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: clamp(17px, 2.5vw, 20px);
+        line-height: 1.7;
+      }
+
+      .tagline strong {
+        color: var(--text);
+        font-weight: 620;
+      }
+
+      .hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 650;
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+      }
+
+      .button-primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .button-primary:hover {
+        border-color: var(--accent-strong);
+        background: var(--accent-strong);
+      }
+
+      :root[data-theme="dark"] .button-primary {
+        color: #171526;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(23px, 4vw, 30px);
+        font-weight: 730;
+        letter-spacing: -0.05em;
+        line-height: 1.2;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project-card {
+        min-height: 208px;
+        padding: 25px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface);
+        box-shadow: 0 2px 6px rgb(35 36 65 / 2%);
+        transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-6px);
+        border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+        box-shadow: var(--shadow);
+      }
+
+      .project-icon {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        place-items: center;
+        margin-bottom: 22px;
+        border-radius: 14px;
+        background: var(--accent-tint);
+        font-size: 23px;
+      }
+
+      .project-card h3 {
+        margin: 0 0 7px;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+
+      .project-card p {
+        max-width: 40ch;
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      @media (max-width: 620px) {
+        .site-header,
+        main {
+          width: min(100% - 36px, 1040px);
+        }
+
+        .site-header {
+          min-height: 72px;
+        }
+
+        .nav {
+          gap: 14px;
+          font-size: 13px;
+        }
+
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-card {
+          min-height: 190px;
+        }
+
+        .section-heading {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Anto Jeries A, home">anto<span>.</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="mailto:jeriesanto@gmail.com">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">🌙</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="about" aria-labelledby="intro-title">
+        <p class="eyebrow">First-year B.Tech student · Joy University</p>
+        <h1 id="intro-title">Hi, I’m Anto <span>Jeries</span> <span aria-hidden="true">👋</span></h1>
+        <p class="tagline"><strong>Learning, building, and bringing ideas to life.</strong><br>
+          Aspiring developer · Class of 2030</p>
+        <div class="hero-links">
+          <a class="button button-primary" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a>
+          <a class="button" href="https://github.com/jeriesanto-prog" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <h2 id="projects-title">Things I’m exploring</h2>
+          <p>Small ideas, growing skills.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-icon" aria-hidden="true">🧭</div>
+            <h3>Campus Compass</h3>
+            <p>A student-friendly planner concept for keeping classes, deadlines, and campus events in one place.</p>
+          </article>
+          <article class="project-card">
+            <div class="project-icon" aria-hidden="true">🌱</div>
+            <h3>GreenCart</h3>
+            <p>A sustainable shopping concept that helps people discover local, planet-conscious everyday products.</p>
+          </article>
+          <article class="project-card">
+            <div class="project-icon" aria-hidden="true">📚</div>
+            <h3>StudySync</h3>
+            <p>A focused study-room concept for setting goals, sharing progress, and learning alongside friends.</p>
+          </article>
+          <article class="project-card">
+            <div class="project-icon" aria-hidden="true">🍲</div>
+            <h3>Pixel Pantry</h3>
+            <p>A recipe organizer concept that turns the ingredients on hand into simple meal inspiration.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script>
+      const themeButton = document.querySelector(".theme-toggle");
+      const root = document.documentElement;
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function updateThemeButton() {
+        const dark = root.dataset.theme
+          ? root.dataset.theme === "dark"
+          : systemPrefersDark.matches;
+        themeButton.textContent = dark ? "☀️" : "🌙";
+        themeButton.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+        themeButton.setAttribute("aria-pressed", String(dark));
+      }
+
+      themeButton.addEventListener("click", () => {
+        const currentlyDark = root.dataset.theme
+          ? root.dataset.theme === "dark"
+          : systemPrefersDark.matches;
+        const nextTheme = currentlyDark ? "light" : "dark";
+        root.dataset.theme = nextTheme;
+        localStorage.setItem("portfolio-theme", nextTheme);
+        updateThemeButton();
+      });
+
+      systemPrefersDark.addEventListener("change", () => {
+        if (!root.dataset.theme) updateThemeButton();
+      });
+      updateThemeButton();
+    </script>
+  </body>
+</html>
